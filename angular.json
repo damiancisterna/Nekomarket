@@ -21,33 +21,18 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
+                { "type": "initial", "maximumWarning": "500kB", "maximumError": "1MB" },
+                { "type": "anyComponentStyle", "maximumWarning": "4kB", "maximumError": "8kB" }
               ],
               "outputHashing": "all"
             },
@@ -62,12 +47,8 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "nekomarket:build:production"
-            },
-            "development": {
-              "buildTarget": "nekomarket:build:development"
-            }
+            "production": { "buildTarget": "nekomarket:build:production" },
+            "development": { "buildTarget": "nekomarket:build:development" }
           },
           "defaultConfiguration": "development"
         },
@@ -80,10 +61,8 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -92,5 +71,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "46d004e6-acb4-4f7b-b7b3-a89e08b40f64"
   }
 }

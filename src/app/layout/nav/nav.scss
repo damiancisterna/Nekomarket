@@ -1,0 +1,85 @@
+/* Nav por encima del hero */
+.nav {
+  position: relative;
+  z-index: 10;              /* más que el hero__banner y las imágenes */
+}
+
+/* Estructura interna del nav */
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Botón "Todas las categorías" */
+.nav__all-wrap {
+  position: relative;
+}
+
+.nav__all {
+  background: #fff;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  padding: 8px 14px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* Dropdown: por defecto oculto */
+.nav__dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  margin-top: 4px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 10px 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .18);
+  min-width: 200px;
+
+  display: none;            /* oculto */
+  z-index: 20;              /* por encima de todo lo del hero */
+}
+
+/* Cuando está abierto (click) */
+.nav__dropdown.is-open {
+  display: block;
+}
+
+/* Links dentro del dropdown */
+.nav__dropdown a {
+  display: block;
+  font-size: 14px;
+  color: #1d5670;
+  text-decoration: none;
+  padding: 4px 0;
+}
+
+.nav__dropdown a:hover {
+  text-decoration: underline;
+}
+
+/* Tabs de arriba (las que ya tenías) */
+.nav__tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #0b3a4e;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.tab.is-active {
+  background: #ffffff;
+  font-weight: 700;
+}

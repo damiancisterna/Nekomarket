@@ -1,0 +1,35 @@
+<nav class="nav">
+  <div class="container nav__inner">
+
+    <!-- BOTÓN + DROPDOWN DE CATEGORÍAS -->
+    <div class="nav__all-wrap">
+      <button
+        class="nav__all"
+        type="button"
+        (click)="isCategoriesOpen = !isCategoriesOpen"
+      >
+        <strong>☰</strong> Todas las categorías
+      </button>
+
+      <!-- LISTA DE CATEGORÍAS (dropdown) -->
+      <div class="nav__dropdown" [class.is-open]="isCategoriesOpen">
+        <a href="#">Ofertas</a>
+        <a href="#">Trajes completos</a>
+        <a href="#">Pelucas</a>
+        <a href="#">Lentes</a>
+        <a href="#">Props</a>
+        <a href="#">Niños</a>
+        <a href="#">Maquillaje</a>
+        <a href="#">Tatuajes</a>
+      </div>
+    </div>
+
+    <!-- Pestañas principales -->
+    <div class="nav__tabs">
+      <a class="tab is-active" href="#">Pelucas</a>
+      <a class="tab" href="#">Trajes</a>
+      <a class="tab" href="#">Lentes</a>
+      <a class="tab" href="#">Props</a>
+    </div>
+  </div>
+</nav>

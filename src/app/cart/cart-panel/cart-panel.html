@@ -1,0 +1,39 @@
+<!-- overlay -->
+<div class="cart-overlay" *ngIf="ui.cartOpen$ | async" (click)="close()"></div>
+
+<!-- panel -->
+<aside class="cart-panel" [class.is-open]="ui.cartOpen$ | async">
+  <header class="cart-panel__head">
+    <h3>Tu carrito</h3>
+    <button class="close" (click)="close()">×</button>
+  </header>
+
+  <section class="cart-panel__body">
+    <ng-container *ngIf="cart.cart$ | async as lines; else empty">
+      <div class="line" *ngFor="let l of lines">
+        <div class="line__name">{{ l.product.name }}</div>
+        <div class="line__ctrls">
+          <button (click)="dec(l.product.id)">−</button>
+          <span>{{ l.qty }}</span>
+          <button (click)="inc(l.product.id)">+</button>
+          <button class="rm" (click)="remove(l.product.id)">🗑</button>
+        </div>
+        <div class="line__price">
+          {{ l.product.price * l.qty | currency:'CLP':'symbol-narrow' }}
+        </div>
+      </div>
+
+      <div class="cart-panel__total">
+        <span>Total</span>
+        <strong>{{ cart.total$ | async | currency:'CLP':'symbol-narrow' }}</strong>
+      </div>
+      <div class="cart-panel__actions">
+        <button class="clear" (click)="clear()">Vaciar</button>
+        <button class="checkout">Pagar</button>
+      </div>
+    </ng-container>
+    <ng-template #empty>
+      <p>Tu carrito está vacío.</p>
+    </ng-template>
+  </section>
+</aside>

@@ -1,0 +1,7 @@
+<a class="cat-card" href="#">
+  <div class="cat-card__media">
+    <img *ngIf="imageUrl" [src]="imageUrl" [alt]="title"
+         style="width:100%;height:140px;object-fit:cover;border-radius:8px;">
+  </div>
+  <h4 style="margin:6px 0 0">{{ title }}</h4>
+</a>

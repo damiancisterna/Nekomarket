@@ -1,0 +1,40 @@
+<header class="site-header">
+  <div class="container">
+    <!-- Barra superior (lo que ya tenías) -->
+    <div class="topbar">
+      <div></div>
+      <div class="topbar__links">
+        <span>App</span>
+        <span>ES/CLP</span>
+        <a href="#">Identifícate</a>
+        <span>/</span>
+        <a href="#">Regístrate</a>
+        <button class="basket" type="button" (click)="ui.toggleCart()">
+          🛒 <span class="badge">{{ (cart.count$ | async) || 0 }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mainbar: logo + buscador (ejemplo) -->
+    <div class="mainbar">
+      <a routerLink="/" class="logo">
+        <span class="logo__brand">
+          Neko<span class="logo__mask">Market</span>
+        </span>
+        <img
+          src="assets/neko.png"
+          alt="Gato de la suerte NekoMarket"
+          class="logo__neko"
+        >
+      </a>
+
+      <!-- si ya tienes buscador, va aquí -->
+      <div class="search">
+        <input type="search" placeholder="Busca trajes, pelucas, lentes, props..." />
+        <button type="button">Buscar</button>
+      </div>
+
+      <div></div> <!-- tercera columna vacía de la grid -->
+    </div>
+  </div>
+</header>
