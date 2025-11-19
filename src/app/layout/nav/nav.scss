@@ -1,69 +1,68 @@
-/* Nav por encima del hero */
+/* ===== NAV ===== */
+
 .nav {
+  background: var(--azul-cielo);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
   position: relative;
-  z-index: 10;              /* más que el hero__banner y las imágenes */
+  z-index: 10; /* por encima del hero para que el dropdown no quede tapado */
+  margin-bottom: 8px;
 }
 
-/* Estructura interna del nav */
 .nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  padding: 6px 0 10px;
 }
 
-/* Botón "Todas las categorías" */
+/* Botón “Todas las categorías” */
 .nav__all-wrap {
   position: relative;
 }
 
 .nav__all {
-  background: #fff;
+  background: #ffffff;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  padding: 8px 14px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  padding: 6px 16px;
   font-size: 14px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
+  color: #0b3a4e;
 }
 
-/* Dropdown: por defecto oculto */
+/* Dropdown de categorías */
 .nav__dropdown {
   position: absolute;
   top: 110%;
   left: 0;
   margin-top: 4px;
   background: #ffffff;
-  border-radius: 18px;
-  padding: 10px 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .18);
-  min-width: 200px;
+  border-radius: 20px;
+  padding: 10px 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+  min-width: 190px;
 
-  display: none;            /* oculto */
-  z-index: 20;              /* por encima de todo lo del hero */
+  display: none;
+  z-index: 20;
 }
 
-/* Cuando está abierto (click) */
 .nav__dropdown.is-open {
   display: block;
 }
 
-/* Links dentro del dropdown */
 .nav__dropdown a {
   display: block;
   font-size: 14px;
-  color: #1d5670;
+  color: #0284c7;
   text-decoration: none;
   padding: 4px 0;
 }
 
-.nav__dropdown a:hover {
-  text-decoration: underline;
-}
-
-/* Tabs de arriba (las que ya tenías) */
+/* Tabs Pelucas / Trajes / Lentes / Props */
 .nav__tabs {
   display: flex;
   align-items: center;
@@ -71,15 +70,29 @@
 }
 
 .tab {
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
   font-size: 14px;
   text-decoration: none;
   color: #0b3a4e;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .tab.is-active {
   background: #ffffff;
   font-weight: 700;
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  .nav__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .nav__tabs {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }

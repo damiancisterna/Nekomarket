@@ -1,107 +1,130 @@
-/* ===== HEADER (original) ===== */
+/* ===== HEADER ===== */
+
 .site-header {
-    background: var(--azul-cielo);
+  background: var(--azul-cielo);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
 }
 
-/* Barra superior (links a la derecha) */
+/* Barra superior (App | ES/CLP | Identifícate | Registro | carrito) */
 .topbar {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 6px 0;
-    font-size: 12px;
-    color: #0b3a4e;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 12px;
+  color: #0b3a4e;
 }
 
-.topbar a {
-    color: #0b3a4e;
-    text-decoration: none;
-    font-weight: 600;
+.topbar__links a {
+  color: #0b3a4e;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-/* Mainbar: logo + buscador + espacio */
+/* Mainbar: logo + buscador */
 .mainbar {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 16px;
-    padding: 8px 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0 12px;
 }
 
-/* Logo grande “NekoMarket” */
+/* Logo NekoMarket + gatito */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 
 .logo__brand {
-    font-family: "Times New Roman", serif;
-    font-size: clamp(34px, 4.8vw, 64px);
-    font-weight: 800;
-    color: #eaf9ff;
-    text-shadow: 0 2px 0 rgba(0, 0, 0, .12);
-    letter-spacing: .5px;
+  font-family: "Times New Roman", serif;
+  font-size: clamp(34px, 4.8vw, 64px);
+  font-weight: 800;
+  color: #eaf9ff;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, .12);
+  letter-spacing: .5px;
 }
 
 .logo__mask {
-    font-size: clamp(22px, 3.2vw, 32px);
+  font-size: clamp(22px, 3.2vw, 32px);
 }
 
-/* Buscador “pastilla” largo */
+.logo__neko {
+  height: clamp(42px, 6vw, 70px);
+  width: auto;
+  object-fit: contain;
+}
+
+/* Buscador tipo “pastilla” */
 .search {
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: min(780px, 66vw);
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(780px, 66vw);
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 4px 4px 4px 16px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.2);
 }
 
 .search input {
-    flex: 1;
-    height: 44px;
-    border-radius: 999px;
-    border: 1px solid #cfe7ec;
-    padding: 0 16px;
-    background: #f9fcfd;
-    outline: none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
+  flex: 1;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0 8px;
+  background: #f9fcfd;
+  outline: none;
+  font-size: 14px;
 }
 
 .search button {
-    height: 44px;
-    padding: 0 16px;
-    border-radius: 999px;
-    border: 1px solid #cfe7ec;
-    background: #fff;
-    cursor: pointer;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 0;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-/* Responsive */
-@media (max-width:900px) {
-    .topbar {
-        display: none;
-    }
-
-    .mainbar {
-        grid-template-columns: auto 1fr;
-    }
+/* Carrito en la topbar */
+.basket {
+  background: #ffffff;
+  color: #0b3a4e;
+  border: none;
+  border-radius: 999px;
+  padding: 2px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
 }
 
-/* === NUEVO: imagen neko junto al texto del logo === */
-
-/* Imagen del gatito neko al lado de “NekoMarket” */
-.logo__neko {
-    height: clamp(40px, 5vw, 70px);  /* tamaño responsivo */
-    width: auto;
-    object-fit: contain;
-    display: block;
+.badge {
+  background: #ff4b4b;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0 6px;
+  font-size: 11px;
 }
 
-/* En mobile, un poco más chico para que no rompa el header */
-@media (max-width:900px) {
-    .logo__neko {
-        height: clamp(32px, 8vw, 50px);
-    }
+/* Responsive header */
+@media (max-width: 900px) {
+  .topbar {
+    display: none;
+  }
+
+  .mainbar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .search {
+    width: 100%;
+  }
 }

@@ -14,7 +14,7 @@ export type Cart = CartLine[];
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private readonly STORAGE_KEY = 'neko:cart';
-  private readonly MAX_PER_SKU = 3;
+  private readonly MAX_PER_SKU = 20;
 
   getMaxPerSku(): number { return this.MAX_PER_SKU; }
 
