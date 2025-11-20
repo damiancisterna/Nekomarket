@@ -1,20 +1,21 @@
 <a class="product-card">
   <div class="product-card__media">
-    <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name">
+    <img *ngIf="product?.imageUrl" [src]="product.imageUrl" [alt]="product.name">
   </div>
 
   <h3 class="product-card__title">{{ product.name }}</h3>
-  <div class="product-card__price">{{ product.price | currency:'CLP':'symbol-narrow' }}</div>
 
-  
+  <div class="product-card__price">
+    {{ product.price | currency:'CLP':'symbol-narrow' }}
+  </div>
 
-  <!-- Botón crudo para agregar SIEMPRE -->
+  <!-- Botón “AGREGAR” siempre visible -->
   <button class="btn btn--primary" (click)="add()">AGREGAR</button>
 
-  <!-- Controles “reales” (dejarlos, pero ahora podrás ver ambos) -->
+  <!-- Controles de cantidad -->
   <ng-container *ngIf="qty$ | async as q">
     <div class="qty-ctrl">
-      <button class="qty-btn" (click)="dec()">−</button>
+      <button class="qty-btn" (click)="dec()">-</button>
       <span class="qty-num">{{ q }}</span>
       <button class="qty-btn" (click)="inc()" [disabled]="q >= maxPerSku">+</button>
     </div>

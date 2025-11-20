@@ -1,0 +1,13 @@
+<section class="section container" aria-labelledby="titulo-pelucas">
+  <app-section-title
+    idAttr="titulo-pelucas"
+    title="Pelucas">
+  </app-section-title>
+
+  <div class="product-grid">
+    <app-product-card
+      *ngFor="let p of pelucas"
+      [product]="p">
+    </app-product-card>
+  </div>
+</section>

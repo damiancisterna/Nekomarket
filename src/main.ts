@@ -1,8 +1,14 @@
 import 'zone.js';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { Home } from './app/pages/home/home';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { routes } from './app/app.routes';
 
-bootstrapApplication(Home, {
-  providers: [...(appConfig.providers ?? [])],
-}).catch(console.error);
+import { App } from './app/app';   // 👈 importa el componente raíz
+
+bootstrapApplication(App, {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient()
+  ]
+}).catch(err => console.error(err));

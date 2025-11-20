@@ -1,15 +1,22 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CategoryCard } from "./ui/category-card/category-card";
-import { Header } from "./layout/header/header";
-import { Home } from "./pages/home/home";
+
+import { Header } from './layout/header/header';
+import { Nav } from './layout/nav/nav';
+import { CartPanel } from './cart/cart-panel/cart-panel';
+import { Footer } from './layout/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CategoryCard, Header, Home],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    Header,
+    Nav,
+    CartPanel,
+    Footer
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
-export class App {
-  protected readonly title = signal('nekomarket');
-}
+export class App {}
