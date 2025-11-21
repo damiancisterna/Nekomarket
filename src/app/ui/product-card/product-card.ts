@@ -1,15 +1,9 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule, CurrencyPipe, NgIf, AsyncPipe } from '@angular/common';
-import { CartService } from '../../core/cart.service';
 import { Observable } from 'rxjs';
 
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl?: string;
-  stock?: number;
-}
+import { CartService } from '../../core/cart.service';
+import { Product } from '../../core/models';
 
 @Component({
   selector: 'app-product-card',
@@ -22,12 +16,16 @@ export class ProductCard {
   private cart = inject(CartService);
 
   private _product!: Product;
+
   @Input({ required: true })
   set product(p: Product) {
     this._product = p;
-    this.qty$ = this.cart.qty$(p.id);   // <- crea el stream cuando llega el input
+    this.qty$ = this.cart.qty$(p.id);
   }
-  get product() { return this._product; }
+
+  get product(): Product {
+    return this._product;
+  }
 
   qty$!: Observable<number>;
   maxPerSku = this.cart.getMaxPerSku();

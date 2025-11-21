@@ -6,13 +6,18 @@
       <div class="topbar__links">
         <span>App</span>
         <span>ES/CLP</span>
-        <a href="#">Identifícate</a>
+
+        <!-- Ir al login -->
+        <a routerLink="/login">Identifícate</a>
         <span>/</span>
-        <a href="#">Regístrate</a>
+        <!-- Por ahora también al login (después hacemos registro real) -->
+        <a routerLink="/login">Regístrate</a>
+
         <button class="basket" type="button" (click)="ui.toggleCart()">
           🛒 <span class="badge">{{ (cart.count$ | async) || 0 }}</span>
         </button>
       </div>
+
     </div>
 
     <!-- Mainbar: logo + buscador (ejemplo) -->
@@ -21,11 +26,7 @@
         <span class="logo__brand">
           Neko<span class="logo__mask">Market</span>
         </span>
-        <img
-          src="assets/neko.png"
-          alt="Gato de la suerte NekoMarket"
-          class="logo__neko"
-        >
+        <img src="assets/neko.png" alt="Gato de la suerte NekoMarket" class="logo__neko">
       </a>
 
       <!-- si ya tienes buscador, va aquí -->

@@ -1,0 +1,157 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Ana Vendedora",
+      "email": "ana@neko.cl",
+      "password": "123456",
+      "role": "vendedor"
+    },
+    {
+      "id": 2,
+      "name": "Luis Comprador",
+      "email": "luis@neko.cl",
+      "password": "123456",
+      "role": "comprador"
+    }
+  ],
+  "products": [
+    {
+      "id": "peluca-rumi",
+      "name": "Peluca Rumi",
+      "category": "Pelucas",
+      "price": 8590,
+      "imageUrl": "assets/peluca1.png",
+      "stock": 5,
+      "sellerId": 1
+    },
+    {
+      "id": "peluca-roja",
+      "name": "Peluca Roja",
+      "category": "Pelucas",
+      "price": 6500,
+      "imageUrl": "assets/peluca2.png",
+      "stock": 3,
+      "sellerId": 1
+    },
+    {
+      "id": "peluca-izuku",
+      "name": "Peluca Izuku",
+      "category": "Pelucas",
+      "price": 5000,
+      "imageUrl": "assets/peluca3.png",
+      "stock": 4,
+      "sellerId": 1
+    },
+
+    {
+      "id": "wig-nezuko",
+      "name": "Peluca Nezuko",
+      "category": "Ofertas",
+      "price": 12990,
+      "imageUrl": "assets/nezuko.webp",
+      "stock": 18
+    },
+    {
+      "id": "maid-dress",
+      "name": "Traje Maid clásico",
+      "category": "Ofertas",
+      "price": 34990,
+      "imageUrl": "assets/traje_maid.webp",
+      "stock": 9
+    },
+    {
+      "id": "akatsuki",
+      "name": "Capa Akatsuki",
+      "category": "Ofertas",
+      "price": 29990,
+      "imageUrl": "assets/capa_akazuki.webp",
+      "stock": 12
+    },
+    {
+      "id": "prop-kunai",
+      "name": "Set Kunai (3u)",
+      "category": "Ofertas",
+      "price": 8990,
+      "imageUrl": "assets/kunai.jpg",
+      "stock": 25
+    },
+    {
+      "id": "lens-red",
+      "name": "Lentes rojos",
+      "category": "Ofertas",
+      "price": 9990,
+      "imageUrl": "assets/lentes_rojos.jpg",
+      "stock": 30
+    },
+    {
+      "id": "cloak-hood",
+      "name": "Túnica negra",
+      "category": "Ofertas",
+      "price": 25990,
+      "imageUrl": "assets/tunica_negra.webp",
+      "stock": 10
+    },
+
+    {
+      "id": "10",
+      "name": "Miku Cinnamonroll",
+      "category": "Trajes",
+      "price": 10000,
+      "description": "Miku Cinnamoroll, fanart; chaqueta, falda, top, polainas, talla M",
+      "vendor": "Anónimo",
+      "stock": 1,
+      "sellerId": 1
+    },
+    {
+      "id": "11",
+      "name": "Nami LOL",
+      "category": "Trajes",
+      "price": 20000,
+      "description": "Talla M. Nuevo, body, falda, mangas",
+      "vendor": "Anónimo",
+      "stock": 1,
+      "sellerId": 1
+    },
+    {
+      "id": "12",
+      "name": "Black Lobelia",
+      "category": "Trajes",
+      "price": 20000,
+      "description": "Sostén, correas, guantes, gorro, calzón, liga pierna, marca Dokidoki",
+      "vendor": "Anónimo",
+      "stock": 1,
+      "sellerId": 1
+    },
+    {
+      "id": "13",
+      "name": "Peluca Roja",
+      "category": "Pelucas",
+      "price": 5000,
+      "description": "Peluca roja, nueva, malla de puntitos",
+      "vendor": "Anónimo",
+      "stock": 1,
+      "sellerId": 1
+    },
+    {
+      "id": "14",
+      "name": "Peluca Zhongli",
+      "category": "Pelucas",
+      "price": 12000,
+      "description": "Peluca Zhongli, Genshin Impact, malla encaje",
+      "vendor": "Anónimo",
+      "stock": 2,
+      "sellerId": 1
+    },
+    {
+      "id": "15",
+      "name": "Peluca naranja con coleta",
+      "category": "Pelucas",
+      "price": 12000,
+      "description": "Peluca naranja corta con coleta, nueva, malla encaje",
+      "vendor": "Anónimo",
+      "stock": 1,
+      "sellerId": 1
+    }
+  ]
+}

@@ -6,16 +6,16 @@ import { Product } from './models';
 @Injectable({ providedIn: 'root' })
 export class ProductApiService {
 
-  private readonly baseUrl = 'http://localhost:3000'; // donde corre json-server
+  private readonly baseUrl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  /** Trae todos los productos (para "Ofertas de hoy") */
+  // Para "Ofertas de hoy" (todos los productos)
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
-  /** Trae productos filtrados por categoría */
+  // Para Pelucas, Trajes, etc.
   getByCategory(category: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/products`, {
       params: { category }
