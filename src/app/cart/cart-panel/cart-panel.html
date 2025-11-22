@@ -27,11 +27,17 @@
         <span>Total</span>
         <strong>{{ cart.total$ | async | currency:'CLP':'symbol-narrow' }}</strong>
       </div>
+
       <div class="cart-panel__actions">
         <button class="clear" (click)="clear()">Vaciar</button>
-        <button class="checkout">Pagar</button>
+
+        <!-- 👇 AQUÍ ESTÁ EL CAMBIO IMPORTANTE -->
+        <button class="checkout" type="button" (click)="pagar()">
+          Pagar
+        </button>
       </div>
     </ng-container>
+
     <ng-template #empty>
       <p>Tu carrito está vacío.</p>
     </ng-template>

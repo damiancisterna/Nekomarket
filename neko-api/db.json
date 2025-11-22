@@ -1,4 +1,29 @@
 {
+  "orden": [
+    {
+      "id": 1,
+      "producto": "Peluca Rumi",
+      "fecha": "2025-11-20",
+      "total": 8590,
+      "estado": "Pagada",
+      "buyerId": 2,
+      "sellerId": 1,
+      "productId": "peluca-rumi",
+      "cantidad": 1
+    },
+    {
+      "id": 2,
+      "producto": "Peluca Roja",
+      "fecha": "2025-11-21",
+      "total": 6500,
+      "estado": "Pendiente",
+      "buyerId": 2,
+      "sellerId": 1,
+      "productId": "peluca-roja",
+      "cantidad": 1
+    }
+  ],
+
   "users": [
     {
       "id": 1,
@@ -15,6 +40,7 @@
       "role": "comprador"
     }
   ],
+
   "products": [
     {
       "id": "peluca-rumi",
@@ -43,7 +69,6 @@
       "stock": 4,
       "sellerId": 1
     },
-
     {
       "id": "wig-nezuko",
       "name": "Peluca Nezuko",
@@ -92,7 +117,6 @@
       "imageUrl": "assets/tunica_negra.webp",
       "stock": 10
     },
-
     {
       "id": "10",
       "name": "Miku Cinnamonroll",
