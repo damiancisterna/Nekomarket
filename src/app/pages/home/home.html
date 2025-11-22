@@ -11,13 +11,30 @@
   <section class="section container" aria-labelledby="categorias-rapidas">
     <app-section-title idAttr="categorias-rapidas" title="Explora por categoría"></app-section-title>
     <div class="cat-grid">
-      <a routerLink="/pelucas" class="cat-link"> 
-        <app-category-card title="Pelucas"></app-category-card>
-      </a>
 
-      <app-category-card title="Trajes"></app-category-card>
-      <app-category-card title="Lentes"></app-category-card>
-      <app-category-card title="Props"></app-category-card>
-    </div>
+  <a routerLink="/pelucas" class="cat-link">
+    <app-category-card
+      title="Pelucas"
+      imageUrl="assets/peluca4.jpg">
+    </app-category-card>
+  </a>
+
+  <app-category-card
+    title="Trajes"
+    imageUrl="assets/miku.jpg">
+  </app-category-card>
+
+  <app-category-card
+    title="Lentes"
+    imageUrl="assets/contactos.jpg">
+  </app-category-card>
+
+  <app-category-card
+    title="Props"
+    imageUrl="assets/mascara.jpeg">
+  </app-category-card>
+
+</div>
+
   </section>
 </main>

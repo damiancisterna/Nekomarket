@@ -1,37 +1,50 @@
 <header class="site-header">
   <div class="container">
-    <!-- Barra superior (lo que ya tenías) -->
+    <!-- Barra superior -->
     <div class="topbar">
-      <div></div>
+      <div class="topbar__left"></div>
+
       <div class="topbar__links">
-        <span>App</span>
-        <span>ES/CLP</span>
+        <span class="topbar__tag">App</span>
+        <span class="topbar__tag">ES/CLP</span>
 
-        <!-- Ir al login -->
-        <a routerLink="/login">Identifícate</a>
-        <span>/</span>
-        <!-- Por ahora también al login (después hacemos registro real) -->
-        <a routerLink="/login">Regístrate</a>
+        <!-- Acciones derecha: login + carrito -->
+        <div class="header-actions">
+          <!-- Login / registro (va al login por ahora) -->
+          <a routerLink="/login" class="header-auth">
+            Identifícate / Regístrate
+          </a>
 
-        <button class="basket" type="button" (click)="ui.toggleCart()">
-          🛒 <span class="badge">{{ (cart.count$ | async) || 0 }}</span>
-        </button>
+          <!-- Carrito -->
+          <button
+            class="header-cart"
+            type="button"
+            (click)="ui.toggleCart()">
+            <span class="header-cart__icon">🛒</span>
+            <span class="header-cart__badge">
+              {{ (cart.count$ | async) || 0 }}
+            </span>
+          </button>
+        </div>
       </div>
-
     </div>
 
-    <!-- Mainbar: logo + buscador (ejemplo) -->
+    <!-- Mainbar: logo + buscador -->
     <div class="mainbar">
       <a routerLink="/" class="logo">
         <span class="logo__brand">
           Neko<span class="logo__mask">Market</span>
         </span>
-        <img src="assets/neko.png" alt="Gato de la suerte NekoMarket" class="logo__neko">
+        <img
+          src="assets/neko.png"
+          alt="Gato de la suerte NekoMarket"
+          class="logo__neko">
       </a>
 
-      <!-- si ya tienes buscador, va aquí -->
       <div class="search">
-        <input type="search" placeholder="Busca trajes, pelucas, lentes, props..." />
+        <input
+          type="search"
+          placeholder="Busca trajes, pelucas, lentes, props..." />
         <button type="button">Buscar</button>
       </div>
 

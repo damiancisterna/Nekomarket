@@ -11,4 +11,5 @@ import { CommonModule } from '@angular/common';
 export class CategoryCard {
   @Input() title = '';
   @Input() imageUrl?: string;
+  @Input() imageURL = '';
 }
