@@ -1,0 +1,138 @@
+/* Este :host es el contenedor raíz del componente */
+:host {
+  display: block;
+  min-height: calc(100vh - 140px); // deja espacio para header/footer
+  padding: 2rem 1rem 3rem;
+
+  /* Color celeste base + patrón de gatos */
+  background-color: #79cbd6;
+  background-image: url('/assets/neko-cats.png');
+  background-repeat: repeat;
+  background-size: 260px; // ajusta si quieres más grande/pequeño
+}
+
+/* Caja principal del panel */
+.panel-vendedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  border-radius: 24px;
+  background: rgba(7, 16, 38, 0.94); // oscuro, similar al footer
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+}
+.panel-vendedor h1 {
+  font-family: 'Playfair Display', 'Times New Roman', serif; // parecido al logo
+  font-size: 2.4rem;
+  letter-spacing: 0.06em;
+  color: #fef4ff;
+  margin-bottom: 0.25rem;
+}
+
+.panel-vendedor .subtitle {
+  margin-bottom: 1.8rem;
+  color: #c7d5ff;
+  font-size: 0.98rem;
+}
+.resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.resumen-card {
+  background: linear-gradient(135deg, #18243f, #23335c);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.resumen-card h2 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: #ffdede;
+}
+
+.resumen-valor {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.resumen-card.saldo button {
+  margin-top: 0.75rem;
+}
+/* Tabs */
+.tabs {
+  margin-top: 1rem;
+}
+
+::ng-deep .mat-mdc-tab-group .mdc-tab__text-label {
+  font-weight: 600;
+  text-transform: none;
+}
+
+::ng-deep .mat-mdc-tab-header {
+  border-bottom: none;
+}
+
+.section {
+  padding: 1.5rem 0 0.5rem;
+}
+
+.section-split {
+  display: grid;
+  grid-template-columns: 2fr 1.1fr;
+  gap: 1.5rem;
+}
+
+.sub-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+/* Tablas */
+.full-table {
+  width: 100%;
+  background: transparent;
+}
+
+::ng-deep .mat-mdc-table {
+  background: transparent;
+  color: #e5ecff;
+}
+
+::ng-deep .mat-mdc-header-row {
+  background: #151e36;
+}
+
+::ng-deep .mat-mdc-header-cell {
+  font-weight: 600;
+}
+
+::ng-deep .mat-mdc-row:nth-child(even) {
+  background: rgba(236, 233, 233, 0.966);
+}
+
+::ng-deep .mat-mdc-row:nth-child(odd) {
+  background: rgba(231, 229, 229, 0.932);
+}
+@media (max-width: 900px) {
+  .panel-vendedor {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .section-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .panel-vendedor h1 {
+    font-size: 1.8rem;
+  }
+
+  .resumen-grid {
+    grid-template-columns: 1fr;
+  }
+}

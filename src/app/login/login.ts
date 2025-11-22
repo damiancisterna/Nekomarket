@@ -34,21 +34,39 @@ export class LoginPageComponent {
     }
 
     const { email, password } = this.form.value;
-
     if (!email || !password) return;
 
     this.loading = true;
 
     this.auth.login(email, password).subscribe({
       next: user => {
-        console.log('Logueado como', user);
         this.loading = false;
-        this.router.navigateByUrl('/'); // vuelve al home
+
+        // Por seguridad, pero en tu caso si llega aquí siempre hay user
+        if (!user) {
+          this.errorMsg = 'Credenciales inválidas';
+          return;
+        }
+
+        console.log('Logueado como', user);
+
+        // 🔥 Aquí decidimos a dónde va según el rol del db.json
+        if (user.role === 'vendedor') {
+          // Ana Vendedora → Panel del vendedor
+          this.router.navigateByUrl('/vendedor');
+        } else if (user.role === 'comprador') {
+          // Luis Comprador → Home normal de compras
+          this.router.navigateByUrl('/');
+        } else {
+          // Cualquier otro rol (ej. admin) por ahora al home
+          this.router.navigateByUrl('/');
+        }
       },
       error: err => {
         console.error(err);
         this.loading = false;
-        this.errorMsg = err.message || 'Error al iniciar sesión';
+        this.errorMsg =
+          err?.message || 'Error al iniciar sesión';
       }
     });
   }
