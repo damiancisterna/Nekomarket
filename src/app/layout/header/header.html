@@ -8,14 +8,11 @@
         <span class="topbar__tag">App</span>
         <span class="topbar__tag">ES/CLP</span>
 
-        <!-- Acciones derecha: login + carrito -->
         <div class="header-actions">
-          <!-- Login / registro (va al login por ahora) -->
           <a routerLink="/login" class="header-auth">
             Identifícate / Regístrate
           </a>
 
-          <!-- Carrito -->
           <button
             class="header-cart"
             type="button"
@@ -44,11 +41,16 @@
       <div class="search">
         <input
           type="search"
-          placeholder="Busca trajes, pelucas, lentes, props..." />
-        <button type="button">Buscar</button>
+          placeholder="Busca trajes, pelucas, lentes, props..."
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch()" />
+
+        <button type="button" (click)="onSearch()">
+          Buscar
+        </button>
       </div>
 
-      <div></div> <!-- tercera columna vacía de la grid -->
+      <div></div>
     </div>
   </div>
 </header>

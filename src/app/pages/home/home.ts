@@ -1,47 +1,79 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-import { Header } from '../../layout/header/header';
-import { Nav } from '../../layout/nav/nav';
+import { ProductApiService } from '../../core/ProductApiService';
+import { Product } from '../../core/models';
+import { ProductCard } from '../../ui/product-card/product-card';
 import { HeroComponent } from '../../sections/hero/hero';
 import { SectionTitleComponent } from '../../sections/section-title/section-title';
-import { ProductCard } from '../../ui/product-card/product-card';
 import { CategoryCard } from '../../ui/category-card/category-card';
-import { Footer } from '../../layout/footer/footer';
-import { CartPanel } from '../../cart/cart-panel/cart-panel';
-
-import { Product } from '../../core/models';
-import { ProductApiService } from '../../core/ProductApiService';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
-    Header, Nav, HeroComponent,
-    SectionTitleComponent, ProductCard,
-    CategoryCard, Footer, CartPanel
+    ProductCard,
+    HeroComponent,
+    SectionTitleComponent,
+    CategoryCard,
   ],
   templateUrl: './home.html',
-  styleUrls: ['./home.scss']
+  styleUrls: ['./home.scss'],
 })
 export class Home implements OnInit {
 
+  private api   = inject(ProductApiService);
+  private route = inject(ActivatedRoute);
+
   products: Product[] = [];
 
-  private api = inject(ProductApiService);
+  // solo para mostrar (si quieres) lo que llegó por la URL ?q=
+  searchTerm = '';
 
   ngOnInit(): void {
+    // Escuchar cambios en el parámetro ?q= que manda el header
+    this.route.queryParamMap.subscribe(params => {
+      const q = params.get('q') ?? '';
+      this.searchTerm = q;
+
+      if (!q.trim()) {
+        // sin texto → muestro todo
+        this.cargarTodos();
+      } else {
+        // con texto → filtro
+        this.buscar(q);
+      }
+    });
+
+    // primera carga por si entran sin ?q=
+    this.cargarTodos();
+  }
+
+  /** Carga todos los productos sin filtro */
+  private cargarTodos(): void {
     this.api.getProducts().subscribe({
       next: (data) => {
         this.products = data;
-        // console.log('Productos para Ofertas de hoy', data);
       },
-      error: (err) => {
-        console.error('Error cargando productos desde json-server', err);
-      }
+      error: (err) => console.error('Error cargando productos', err),
+    });
+  }
+
+  /** Aplica filtro en el FRONT (nombre + categoría) */
+  private buscar(q: string): void {
+    const term = q.toLowerCase().trim();
+
+    this.api.getProducts().subscribe({
+      next: (data) => {
+        this.products = data.filter(p =>
+          p.name.toLowerCase().includes(term) ||
+          p.category.toLowerCase().includes(term)
+        );
+        console.log('[HOME] filtro =', term, 'resultados =', this.products.length);
+      },
+      error: (err) => console.error('Error filtrando productos', err),
     });
   }
 }

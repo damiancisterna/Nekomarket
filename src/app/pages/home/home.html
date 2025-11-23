@@ -1,40 +1,49 @@
 <app-hero></app-hero>
+
 <main>
   <section class="section container" aria-labelledby="ofertas-hoy">
-    <app-section-title idAttr="ofertas-hoy" title="Ofertas de hoy"></app-section-title>
+    <app-section-title
+      idAttr="ofertas-hoy"
+      title="Ofertas de hoy">
+    </app-section-title>
 
+    <!-- SOLO la grilla, sin input ni botón "Filtrar" -->
     <div class="product-grid">
-      <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+      <app-product-card
+        *ngFor="let p of products"
+        [product]="p">
+      </app-product-card>
     </div>
   </section>
 
   <section class="section container" aria-labelledby="categorias-rapidas">
-    <app-section-title idAttr="categorias-rapidas" title="Explora por categoría"></app-section-title>
+    <app-section-title
+      idAttr="categorias-rapidas"
+      title="Explora por categoría">
+    </app-section-title>
+
     <div class="cat-grid">
+      <a routerLink="/pelucas" class="cat-link">
+        <app-category-card
+          title="Pelucas"
+          imageUrl="assets/peluca4.jpg">
+        </app-category-card>
+      </a>
 
-  <a routerLink="/pelucas" class="cat-link">
-    <app-category-card
-      title="Pelucas"
-      imageUrl="assets/peluca4.jpg">
-    </app-category-card>
-  </a>
+      <app-category-card
+        title="Trajes"
+        imageUrl="assets/miku.jpg">
+      </app-category-card>
 
-  <app-category-card
-    title="Trajes"
-    imageUrl="assets/miku.jpg">
-  </app-category-card>
+      <app-category-card
+        title="Lentes"
+        imageUrl="assets/contactos.jpg">
+      </app-category-card>
 
-  <app-category-card
-    title="Lentes"
-    imageUrl="assets/contactos.jpg">
-  </app-category-card>
-
-  <app-category-card
-    title="Props"
-    imageUrl="assets/mascara.jpeg">
-  </app-category-card>
-
-</div>
-
+      <app-category-card
+        title="Props"
+        imageUrl="assets/mascara.jpeg">
+      </app-category-card>
+    </div>
   </section>
 </main>

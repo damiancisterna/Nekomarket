@@ -6,19 +6,31 @@ import { Product } from './models';
 @Injectable({ providedIn: 'root' })
 export class ProductApiService {
 
-  private readonly baseUrl = 'http://localhost:3000';
+  private readonly baseUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) {}
 
-  // Para "Ofertas de hoy" (todos los productos)
+  /** Obtener todos los productos */
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`);
+    return this.http.get<Product[]>(this.baseUrl);
   }
 
-  // Para Pelucas, Trajes, etc.
+  /** Buscar por texto (q) y/o categoría */
+  search(term?: string, category?: string): Observable<Product[]> {
+    const params: any = {};
+
+    if (term && term.trim()) params.q = term.trim();
+    if (category && category.trim()) params.category = category.trim();
+
+    if (Object.keys(params).length === 0) {
+      return this.getProducts();
+    }
+
+    return this.http.get<Product[]>(this.baseUrl, { params });
+  }
+
+  /** Para páginas como /pelucas */
   getByCategory(category: string): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`, {
-      params: { category }
-    });
+    return this.search(undefined, category);
   }
 }
