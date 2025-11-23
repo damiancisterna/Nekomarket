@@ -41,5 +41,9 @@ export class SellerDashboardService {
     crearOrden(orden: Omit<Orden, 'id'>) {
         return this.http.post<Orden>(`${this.api}/orden`, orden);
     }
+    borrarOrden(id: number) {
+  return this.http.delete<void>(`${this.api}/orden/${id}`);
+}
+
 
 }

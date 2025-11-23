@@ -5,10 +5,14 @@ import { Observable } from 'rxjs';
 import { CartService } from '../../core/cart.service';
 import { Product } from '../../core/models';
 
+// 👇 AGREGA ESTE IMPORT
+import { ChatWidgetComponent } from '../../shared/chat-widget/chat-widget.component';
+
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, NgIf, AsyncPipe],
+  // 👇 AGREGA ChatWidgetComponent a imports
+  imports: [CommonModule, CurrencyPipe, NgIf, AsyncPipe, ChatWidgetComponent],
   templateUrl: './product-card.html',
   styleUrls: ['./product-card.scss'],
 })

@@ -1,0 +1,57 @@
+<div class="checkout container" *ngIf="lineas.length; else empty">
+  <h1>Resumen de compra</h1>
+
+  <section class="checkout__content">
+    <!-- LISTA DE PRODUCTOS -->
+    <div class="checkout__items">
+      <h2>Productos</h2>
+
+      <div class="item" *ngFor="let l of lineas">
+        <div class="item__info">
+          <div class="item__name">{{ l.product.name }}</div>
+          <div class="item__qty">Cantidad: {{ l.qty }}</div>
+        </div>
+        <div class="item__price">
+          {{ l.product.price * l.qty | currency:'CLP':'symbol-narrow' }}
+        </div>
+      </div>
+
+      <div class="checkout__total">
+        <span>Total</span>
+        <strong>{{ total | currency:'CLP':'symbol-narrow' }}</strong>
+      </div>
+    </div>
+
+    <!-- DATOS FALSOS DE PAGO/ENVÍO -->
+    <div class="checkout__side">
+      <h2>Pago simulado</h2>
+      <p>
+        Este es un flujo <strong>de demostración</strong>. No se realiza un pago real,
+        pero se registra la orden en el sistema para que el vendedor la gestione.
+      </p>
+
+      <ul class="fake-form">
+        <li><strong>Método de pago:</strong> Tarjeta de crédito (simulada)</li>
+        <li><strong>Envío:</strong> Envío estándar dentro de Chile</li>
+        <li><strong>Comprador:</strong> {{ auth.user?.email }}</li>
+      </ul>
+
+      <button
+        class="btn-confirm"
+        (click)="confirmarPago()"
+        [disabled]="cargando"
+      >
+        {{ cargando ? 'Procesando...' : 'Confirmar pago' }}
+      </button>
+
+      <p class="error" *ngIf="mensajeError">{{ mensajeError }}</p>
+    </div>
+  </section>
+</div>
+
+<ng-template #empty>
+  <div class="checkout container">
+    <h1>Tu carrito está vacío</h1>
+    <p>Agrega productos desde el catálogo para comenzar una compra.</p>
+  </div>
+</ng-template>

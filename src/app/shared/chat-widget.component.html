@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <button class="btn-chat-toggle" (click)="toggle()">
+    {{ isOpen() ? '❌ Cerrar' : '💬 Preguntar al vendedor' }}
+  </button>
+
+  <div *ngIf="isOpen()" class="chat-box">
+    <p class="chat-header">
+      Consultando por: <strong>{{ product?.name }}</strong>
+    </p>
+
+    <textarea
+      [(ngModel)]="messageText"
+      rows="3"
+      placeholder="Hola, ¿qué medidas tiene el traje?"
+      [disabled]="isSending()">
+    </textarea>
+
+    <div class="actions">
+      <button
+        (click)="send()"
+        [disabled]="!messageText || isSending()"
+        class="btn-send">
+        {{ isSending() ? 'Enviando...' : 'Enviar' }}
+      </button>
+    </div>
+
+    <p *ngIf="successMessage()" class="success-msg">
+      {{ successMessage() }}
+    </p>
+  </div>
+</div>

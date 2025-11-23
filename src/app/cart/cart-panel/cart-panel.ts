@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, CurrencyPipe, NgIf, NgFor, AsyncPipe } from '@angular/common';
+
 import { UiStore } from '../../core/ui.store';
 import { CartService } from '../../core/cart.service';
-import { SellerDashboardService } from '../../core/seller-dashboard.service';
 import { AuthService } from '../../core/auth.service';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';   // 👈 OJO: el Router CORRECTO
 
 @Component({
   selector: 'app-cart-panel',
@@ -17,7 +18,7 @@ export class CartPanel {
   ui   = inject(UiStore);
   cart = inject(CartService);
   auth = inject(AuthService);
-  sellerDashboard = inject(SellerDashboardService);
+  router = inject(Router);
 
   close()  { this.ui.closeCart(); }
   inc(id: string)    { this.cart.inc(id); }
@@ -26,6 +27,8 @@ export class CartPanel {
   clear()            { this.cart.clear(); }
 
   async pagar(): Promise<void> {
+    console.log('[CartPanel] click en Pagar');
+
     const user = this.auth.user;
 
     if (!user) {
@@ -38,38 +41,16 @@ export class CartPanel {
       return;
     }
 
-    // foto del carrito
+    // Revisar que el carrito tenga algo
     const items = await firstValueFrom(this.cart.cart$);
-
     if (!items || !items.length) {
       alert('Tu carrito está vacío');
       return;
     }
 
-    // crear una orden por cada línea
-    for (const item of items) {
-      const p        = item.product;
-      const cantidad = item.qty;
-      const total    = p.price * cantidad;
-      const sellerId = (p as any).sellerId ?? 1; // Ana por defecto
-
-      // 👇 AQUÍ va el POST REAL
-      await firstValueFrom(
-        this.sellerDashboard.crearOrden({
-          producto:  p.name,
-          fecha:     new Date().toISOString().slice(0, 10),
-          total,
-          estado:    'Pagada',
-          buyerId:   user.id,
-          sellerId,
-          productId: p.id,
-          cantidad,
-        })
-      );
-    }
-
-    alert('Compra registrada 🎉');
-    this.cart.clear();
+    // 👉 Aquí ya NO creamos órdenes.
+    // Solo cerramos el panel y vamos a /checkout
     this.ui.closeCart();
+    this.router.navigate(['/checkout']);
   }
 }
